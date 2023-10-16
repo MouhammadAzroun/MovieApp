@@ -5,6 +5,7 @@ import './App.css'
 import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
+import NavBar from './Components/NavBar';
 
 const App = () => {
 	const [movies, setMovies] = useState([]);
@@ -27,6 +28,7 @@ const App = () => {
 
 	return (
 		<div>
+      <NavBar />
 			<div>
 				<MovieListHeading heading='Movies' />
 				<SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />

@@ -26,12 +26,15 @@ const MovieList = (props) => {
       ))}
       {lightboxDisplay ? (
         <div id="lightBox" onClick={closeLightBox}>
-          <h3 id="lightBox-title">
-            {movieToDisplay.Title}
-            <br />
-            <p id="lightBox-year">( {movieToDisplay.Year} )</p>
-          </h3>
-          <img id="lightBox-img" src={movieToDisplay.Poster} />
+          <div id="lightBox-poster">
+            <h3 id="lightBox-title">
+              {movieToDisplay.Title}
+              <br />
+              <p id="lightBox-year">( {movieToDisplay.Year} )</p>
+            </h3>
+            <img id="lightBox-img" src={movieToDisplay.Poster} />
+          </div>
+
           <button id="lightBox-addToCartButton">Add to cart</button>
         </div>
       ) : (

@@ -13,6 +13,14 @@ const MovieList = (props) => {
     setLightboxDisplay(false);
   };
 
+  const sortedMovies = props.movies.slice().sort((a, b) => {
+    if (props.sortOrder === 'asc') {
+      return a.Year.localeCompare(b.Year);
+    } else {
+      return b.Year.localeCompare(a.Year);
+    }
+  });
+
   return (
     <div className="movie-list">
       {props.movies.map((movie, index) => (

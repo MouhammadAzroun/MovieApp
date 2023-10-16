@@ -5,8 +5,10 @@ import './App.css'
 import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
+import Cart from './components/Cart';
 import NavBar from './Components/NavBar';
 import SortOptions from './components/SortOptions';
+
 
 const App = () => {
 	const [movies, setMovies] = useState([]);

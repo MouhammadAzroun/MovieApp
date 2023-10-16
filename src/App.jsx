@@ -29,9 +29,6 @@ const App = () => {
 	return (
 		<div>
 			<div>
-				<Cart/>
-			</div>
-			<div>
 				<MovieListHeading heading='Movies' />
 				<SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
 			</div>

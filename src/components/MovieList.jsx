@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux"
+import { actions } from "../features/cart"
 
 const MovieList = (props) => {
   const [lightboxDisplay, setLightboxDisplay] = useState(false);
@@ -12,6 +14,17 @@ const MovieList = (props) => {
   const closeLightBox = () => {
     setLightboxDisplay(false);
   };
+
+
+  //value är innehållet i kundvagnen
+  const value = useSelector( state => state.cart);
+  //Behövs för tillgång till kundvagnen
+  const dispatch = useDispatch();
+  //Funktioner att använda för kundvagnen
+  const add = () => dispatch(actions.add(movieToDisplay.Title));
+  const clear = () => dispatch(actions.clear());
+
+
 
   return (
     <div className="movie-list">
@@ -32,7 +45,7 @@ const MovieList = (props) => {
             <p id="lightBox-year">( {movieToDisplay.Year} )</p>
           </h3>
           <img id="lightBox-img" src={movieToDisplay.Poster} />
-          <button id="lightBox-addToCartButton">Add to cart</button>
+          <button onClick={add} id="lightBox-addToCartButton">Add to cart</button>
         </div>
       ) : (
         ""

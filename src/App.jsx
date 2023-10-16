@@ -5,6 +5,7 @@ import './App.css'
 import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
+import Cart from './components/Cart';
 
 const App = () => {
 	const [movies, setMovies] = useState([]);
@@ -27,6 +28,9 @@ const App = () => {
 
 	return (
 		<div>
+			<div>
+				<Cart/>
+			</div>
 			<div>
 				<MovieListHeading heading='Movies' />
 				<SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />

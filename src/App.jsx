@@ -6,38 +6,67 @@ import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
 import NavBar from './Components/NavBar';
+import SortOptions from './components/SortOptions';
 
 const App = () => {
 	const [movies, setMovies] = useState([]);
 	const [searchValue, setSearchValue] = useState('');
+	const [sortOrder, setSortOrder] = useState('asc');
+
 
 	const getMovieRequest = async (searchValue) => {
 		const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=263d22d8`;
-
+	  
 		const response = await fetch(url);
 		const responseJson = await response.json();
-
+	  
 		if (responseJson.Search) {
-			setMovies(responseJson.Search);
+		  const sortedMovies = responseJson.Search.sort((a, b) => {
+			if (sortOrder === 'asc') {
+			  return a.Year.localeCompare(b.Year);
+			} else {
+			  return b.Year.localeCompare(a.Year);
+			}
+		  });
+	  
+		  setMovies(sortedMovies);
 		}
-	};
+	  };
+	  
 
 	useEffect(() => {
 		getMovieRequest(searchValue);
 	}, [searchValue]);
 
-	return (
+	const handleSortChange = (e) => {
+		setSortOrder(e.target.value);
+	  };
+	  
+
+	  return (
 		<div>
-      <NavBar />
+		  <NavBar />
+		  <div className="movie-heading">
+			<MovieListHeading heading='Movies' />
+		  </div>
+		  <div className="search-sort-container">
 			<div>
-				<MovieListHeading heading='Movies' />
-				<SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+			  <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
 			</div>
-			<div className='row'>
-				<MovieList movies={movies} />
+			<div className="sort-options">
+			  <SortOptions sortMovies={handleSortChange} />
 			</div>
+		  </div>
+		  <div className='row'>
+			<MovieList movies={movies} sortOrder={sortOrder} />
+		  </div>
 		</div>
-	);
+	  );
+	  
+	  
+	  
+	  
+	  
 };
 
 export default App;

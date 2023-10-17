@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { actions } from "../features/cart" 
+import { actions } from "../features/cart"
+import { Link } from 'react-router-dom';
 
 
 const NavBar = () => {
@@ -10,7 +11,9 @@ const NavBar = () => {
 
   return (
     <div id='navBar'>
-    <button id='cartButton'>Cart ({value.length})</button>
+      <Link to="/cart">
+        <button id='cartButton'>Cart ({value.length})</button>
+      </Link>
     </div>
   )
 }

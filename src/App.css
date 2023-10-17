@@ -23,6 +23,24 @@
   max-width: 100%;
 }
 
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  width: calc(20% - 20px);
+  text-align: center;
+  padding: 2%;
+}
+
+.cart-item img {
+  width: 5em;
+  height: 5em;
+}
+
+.cart-name {
+  padding: 1em;
+  text-align: center;
+}
+
 #lightBox {
   position: fixed;
   display: flex;

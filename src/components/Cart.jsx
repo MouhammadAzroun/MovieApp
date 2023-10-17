@@ -10,7 +10,7 @@ const Cart = () => {
     //Behövs för tillgång till kundvagnen
     const dispatch = useDispatch();
     //Funktioner att använda för kundvagnen
-    const add = () => dispatch(actions.add("Movie"));
+    const add = () => dispatch(actions.add());
     const clear = () => dispatch(actions.clear());
 
 
@@ -19,9 +19,18 @@ const Cart = () => {
 
     return (
         <div>
-            Cart: {value}<br/>
-            <button onClick={add}>Add movie</button>
-            <button onClick={clear}>Clear cart</button>
+            {value.map((item, index) => (
+        <div key={index} className="cart-item">
+          <img
+            src={item.Poster}
+            alt="Cover"
+            onClick={() => openAndSetLightBox()}
+           /> <p className="cart-name">{item.Title}</p>
+        </div>
+      ))}
+            Total cost: {value.length * 100}<br/>
+            <button onClick={clear}>Empty cart</button>
+            <button>Checkout</button>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { actions } from "../features/cart"
+import { actions } from "../features/cart" 
 
 
 const NavBar = () => {

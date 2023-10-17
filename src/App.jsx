@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import './AppContentContainer.css'
 import MovieList from './components/MovieList';
 import MovieListHeading from './components/MovieListHeading';
 import SearchBox from './components/SearchBox';
 import Cart from './components/Cart';
 import NavBar from './Components/NavBar';
 import SortOptions from './components/SortOptions';
+import NewReleaseList from './Components/NewReleaseList';
 
 
 const App = () => {
@@ -46,10 +46,10 @@ const App = () => {
 	  
 
 	  return (
-		<div>
+		<div className='app-content-container'>
 		  <NavBar />
 		  <div className="movie-heading">
-			<MovieListHeading heading='Movies' />
+			<MovieListHeading heading='not netflix' />
 		  </div>
 		  <div className="search-sort-container">
 			<div>
@@ -61,6 +61,10 @@ const App = () => {
 		  </div>
 		  <div className='row'>
 			<MovieList movies={movies} sortOrder={sortOrder} />
+
+			{/* Går inte att få fram något från api med (y=) 
+			som ska generera på årtal enligt omdapi's dokumentation */}
+			{/* <NewReleaseList /> */}
 		  </div>
 		</div>
 	  );

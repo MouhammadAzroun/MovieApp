@@ -21,7 +21,7 @@ const MovieList = (props) => {
   //Behövs för tillgång till kundvagnen
   const dispatch = useDispatch();
   //Funktioner att använda för kundvagnen
-  const add = () => dispatch(actions.add(movieToDisplay.Title));
+  const add = () => dispatch(actions.add(movieToDisplay));
   const clear = () => dispatch(actions.clear());
 
   const sortedMovies = props.movies.slice().sort((a, b) => {

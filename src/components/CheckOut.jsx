@@ -12,11 +12,12 @@ const CheckOut = () => {
     const [payment, setPayment] = useState('Card');
     const [orderSubmitted, setOrderSubmitted] = useState(false);
     const [postage, setPostage] = useState('postnord')
-    
+    const clear = () => dispatch(actions.clear());
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setOrderSubmitted(true);
+        clear();
     };
 
     return (

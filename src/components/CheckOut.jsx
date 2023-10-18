@@ -32,7 +32,7 @@ const CheckOut = () => {
         </div>
       ))}
         </div>
-        {orderSubmitted && (
+        {orderSubmitted ? (
         <div className="order-summary">
           <h3>Order Summary</h3>
           <p>Name: {name}</p>
@@ -41,7 +41,7 @@ const CheckOut = () => {
           <p>Price: {value.length * 100}</p>
           <p>Thanks</p>
         </div>
-      )}
+      ) : (
         <form onSubmit={handleSubmit}>
         <h2 className="checkout-cost">Total cost: {value.length * 100}</h2>
          <div className="form-group">
@@ -99,8 +99,8 @@ const CheckOut = () => {
          </div>
           <button type="submit">Submit Order</button>
         </form>
-    </div>
-      
+      )}
+    </div>   
     );
   };
 

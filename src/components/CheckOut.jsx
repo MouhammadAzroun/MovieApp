@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { actions } from "../features/cart"
 import { useDispatch, useSelector } from "react-redux"
+import { totalCost } from './Cart';
 
 
 const CheckOut = () => {
@@ -17,7 +18,7 @@ const CheckOut = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setOrderSubmitted(true);
-        clear();
+        //clear();
     };
 
     return (
@@ -41,12 +42,12 @@ const CheckOut = () => {
           <p>Address: {address}</p>
           <p>Payment Method: {payment}</p>
           <p>Form of delivery: {postage}</p>
-          <p>Price: {value.length * 100}</p>
+          <p>Price: {totalCost(value)}</p>
           <p>Thanks</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit}>
-        <h2 className="checkout-cost">Total cost: {value.length * 100}</h2>
+        <h2 className="checkout-cost">Total cost: {totalCost(value)}</h2>
          <div className="form-group">
           <label htmlFor="name">Name:</label>
           <input

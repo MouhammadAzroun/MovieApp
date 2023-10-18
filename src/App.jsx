@@ -7,6 +7,7 @@ import SearchBox from './components/SearchBox';
 import Cart from './components/Cart';
 import NavBar from './Components/NavBar';
 import SortOptions from './components/SortOptions';
+import CheckOut from './components/CheckOut';
 import { Route, Routes } from 'react-router-dom';
 import NewReleaseList from './Components/NewReleaseList';
 
@@ -82,6 +83,19 @@ const App = () => {
 			</div>
 		</div>
 	}/>
+<Route path="/checkout"
+	element={
+		<div> 
+			<NavBar/>
+			<div>
+				<CheckOut/>
+			</div>
+		</div>
+		
+	}/>
+
+
+	
 
 
 			</Routes>

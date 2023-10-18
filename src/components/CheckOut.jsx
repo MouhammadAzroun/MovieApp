@@ -11,6 +11,7 @@ const CheckOut = () => {
     const dispatch = useDispatch();
     const [payment, setPayment] = useState('Card');
     const [orderSubmitted, setOrderSubmitted] = useState(false);
+    const [postage, setPostage] = useState('postnord')
     
 
     const handleSubmit = (e) => {
@@ -38,6 +39,7 @@ const CheckOut = () => {
           <p>Name: {name}</p>
           <p>Address: {address}</p>
           <p>Payment Method: {payment}</p>
+          <p>Form of delivery: {postage}</p>
           <p>Price: {value.length * 100}</p>
           <p>Thanks</p>
         </div>
@@ -93,6 +95,27 @@ const CheckOut = () => {
                 onChange={() => setPayment('Klarna')}
                 />
                 Klarna
+            </label>
+            <h3>Form of delivery:</h3>
+            <label>
+                <input
+                type="radio"
+                name="Postage"
+                value="postnord"
+                checked={postage === 'postnord'}
+                onChange={() => setPostage('postnord')}
+                />
+                Postnord
+            </label>
+            <label>
+                <input
+                type="radio"
+                name="Postage"
+                value="pickup"
+                checked={postage === 'pickup'}
+                onChange={() => setPostage('pickup')}
+                />
+                Pick up
             </label>
 
 

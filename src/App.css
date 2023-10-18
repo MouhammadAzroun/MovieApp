@@ -166,6 +166,22 @@
     40px 20px rgba(0, 0, 0, 0.1);
 }
 
+.checkout-container {
+  text-align: center;
+}
+
+.form-group {
+  margin: 10px 0;
+  display: block;
+  text-align: center;
+}
+.checkout-movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
 
 
 

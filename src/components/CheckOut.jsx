@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { actions } from "../features/cart"
 import { useDispatch, useSelector } from "react-redux"
 import { totalCost } from './Cart';
+import visaandmastercard from './visa-and-mastercard.gif';
+import applepay from './apple-pay.png';
+import klarna from'./klarna.jpeg';
 
 
 const CheckOut = () => {
@@ -88,6 +91,7 @@ const CheckOut = () => {
                 onChange={() => setPayment('Card')}
                 />
                 Card
+                <img className='paymentpic' src={visaandmastercard} alt="Card" />
             </label>
             <label>
                 <input
@@ -98,6 +102,7 @@ const CheckOut = () => {
                 onChange={() => setPayment('Applepay')}
                 />
                 Apple pay
+                <img className='paymentpic' src={applepay} alt="applepay" />
             </label>
             <label>
                 <input
@@ -108,6 +113,7 @@ const CheckOut = () => {
                 onChange={() => setPayment('Klarna')}
                 />
                 Klarna
+                <img className='paymentpic' src={klarna} alt="klarna" />
             </label>
             <h3>Form of delivery:</h3>
             <label>

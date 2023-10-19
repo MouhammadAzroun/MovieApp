@@ -11,6 +11,9 @@ const NavBar = () => {
 
   return (
     <div id='navBar'>
+      <Link to="/">
+        <button id='homeButton'>Home</button>
+      </Link>
       <Link to="/cart">
         <button id='cartButton'>Cart ({value.length})</button>
       </Link>

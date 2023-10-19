@@ -55,10 +55,10 @@ const App = () => {
 				
 <Route path="/"
 	element= {
-		<div>
+		<div id='appContainer'>
 		  <NavBar />
 		  <div className="movie-heading">
-			<MovieListHeading heading='Movies' />
+			<MovieListHeading heading='not netflix' />
 		  </div>
 		  <div className="search-sort-container">
 			<div>

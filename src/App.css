@@ -210,6 +210,10 @@
     width: calc(20% - 20px);
   }
 }
+.paymentpic {
+  margin: 10px;
+  height: 48px;
+}
 
 
 

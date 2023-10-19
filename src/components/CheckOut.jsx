@@ -14,11 +14,22 @@ const CheckOut = () => {
     const [orderSubmitted, setOrderSubmitted] = useState(false);
     const [postage, setPostage] = useState('postnord')
     const clear = () => dispatch(actions.clear());
+    const [orderInfo, setOrderInfo] = useState(null);
+
 
     const handleSubmit = (e) => {
+
         e.preventDefault();
+        setOrderInfo({
+          name,
+          address,
+          payment,
+          postage,
+          totalCost: totalCost(value)
+        });
         setOrderSubmitted(true);
-        //clear();
+        clear();
+        
     };
 
     return (
@@ -38,11 +49,11 @@ const CheckOut = () => {
         {orderSubmitted ? (
         <div className="order-summary">
           <h3>Order Summary</h3>
-          <p>Name: {name}</p>
-          <p>Address: {address}</p>
-          <p>Payment Method: {payment}</p>
-          <p>Form of delivery: {postage}</p>
-          <p>Price: {totalCost(value)}</p>
+          <p>Name: {orderInfo.name}</p>
+          <p>Address: {orderInfo.address}</p>
+          <p>Payment Method: {orderInfo.payment}</p>
+          <p>Form of delivery: {orderInfo.postage}</p>
+          <p>Price: {orderInfo.totalCost}</p>
           <p>Thanks</p>
         </div>
       ) : (

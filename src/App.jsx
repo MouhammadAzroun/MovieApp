@@ -16,11 +16,13 @@ const App = () => {
 	const [movies, setMovies] = useState([]);
 	const [searchValue, setSearchValue] = useState('');
 	const [sortOrder, setSortOrder] = useState('asc');
+	const [searchClicked, setSearchClicked] = useState(false);
+
 
 
 	const getMovieRequest = async (searchValue) => {
 		const url = `https://www.omdbapi.com/?s=${searchValue}&apikey=263d22d8`;
-	  
+
 		const response = await fetch(url);
 		const responseJson = await response.json();
 	  
@@ -38,9 +40,13 @@ const App = () => {
 	  };
 	  
 
-	useEffect(() => {
-		getMovieRequest(searchValue);
-	}, [searchValue]);
+	
+useEffect(() => {
+	if (searchClicked) {
+	  getMovieRequest();
+	  setSearchClicked(false); 
+	}
+  }, [searchValue, searchClicked]);
 
 	const handleSortChange = (e) => {
 		setSortOrder(e.target.value);
@@ -62,7 +68,9 @@ const App = () => {
 		  </div>
 		  <div className="search-sort-container">
 			<div>
-			  <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
+			  <SearchBox searchValue={searchValue}
+  setSearchValue={setSearchValue}
+  setSearchClicked={setSearchClicked}/>
 			</div>
 			<div className="sort-options">
 			  <SortOptions sortMovies={handleSortChange} />

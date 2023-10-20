@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../features/cart";
-import { Reveal } from "Components/utils/Reveal";
+import { Reveal } from "../components/utils/Reveal";
 
 //För att räkna ut pris
 function price(year) {

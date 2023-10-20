@@ -1,18 +1,19 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux"
-import { actions } from "../features/cart"
+import { useDispatch, useSelector } from "react-redux";
+import { actions } from "../features/cart";
+import { Reveal } from "Components/utils/Reveal";
 
 //För att räkna ut pris
-function price(year){
-  if(year < 1980){
+function price(year) {
+  if (year < 1980) {
     return 39;
-  } else if(year < 1990){
+  } else if (year < 1990) {
     return 79;
-  } else if(year < 2000){
+  } else if (year < 2000) {
     return 99;
-  } else if(year < 2010){
+  } else if (year < 2010) {
     return 129;
-  } else{
+  } else {
     return 199;
   }
 }
@@ -30,9 +31,8 @@ const MovieList = (props) => {
     setLightboxDisplay(false);
   };
 
-
   //value är innehållet i kundvagnen
-  const value = useSelector( state => state.cart);
+  const value = useSelector((state) => state.cart);
   //Behövs för tillgång till kundvagnen
   const dispatch = useDispatch();
   //Funktioner att använda för kundvagnen
@@ -40,7 +40,7 @@ const MovieList = (props) => {
   const clear = () => dispatch(actions.clear());
 
   const sortedMovies = props.movies.slice().sort((a, b) => {
-    if (props.sortOrder === 'asc') {
+    if (props.sortOrder === "asc") {
       return a.Year.localeCompare(b.Year);
     } else {
       return b.Year.localeCompare(a.Year);
@@ -51,11 +51,13 @@ const MovieList = (props) => {
     <div className="movie-list">
       {props.movies.map((movie, index) => (
         <div key={index} className="movie-item">
-          <img
-            src={movie.Poster}
-            alt="movie"
-            onClick={() => openAndSetLightBox(movie)}
-          />
+          <Reveal>
+            <img
+              src={movie.Poster}
+              alt="movie"
+              onClick={() => openAndSetLightBox(movie)}
+            />
+          </Reveal>
         </div>
       ))}
       {lightboxDisplay ? (
@@ -68,8 +70,9 @@ const MovieList = (props) => {
             </h3>
             <img id="lightBox-img" src={movieToDisplay.Poster} />
           </div>
-          <button onClick={add} id="lightBox-addToCartButton">Add to cart ({price(movieToDisplay.Year)}kr)</button>
-
+          <button onClick={add} id="lightBox-addToCartButton">
+            Add to cart ({price(movieToDisplay.Year)}kr)
+          </button>
         </div>
       ) : (
         ""

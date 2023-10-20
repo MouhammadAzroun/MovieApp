@@ -5,7 +5,7 @@ const NewReleaseList = () => {
   const [loading, setLoading] = useState(true);
 
   const getMoviesByCurrentYear = async (year) => {
-    const url = `http://www.omdbapi.com/?y=2023&apikey=263d22d8`;
+    const url = `https://www.omdbapi.com/?y=2023&apikey=263d22d8`;
 
     try {
       const response = await fetch(url);

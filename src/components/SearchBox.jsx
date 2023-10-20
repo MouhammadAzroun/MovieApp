@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const SearchBox = (props) => {
+  const { searchValue, setSearchValue, setSearchClicked } = props;
+
+  const handleSearchClick = () => {
+    setSearchClicked(true);
+    setSearchValue(searchValue);
+  };
+
   return (
     <div>
       <input
         className='form-control search-input'
-        value={props.value}
-        onChange={(event) => props.setSearchValue(event.target.value)}
+        value={searchValue}
+        onChange={(event) => setSearchValue(event.target.value)}
         placeholder='Type to search...'
-      ></input>
+      />
+      <button className='search-button' onClick={handleSearchClick}>
+        Search
+      </button>
     </div>
   );
 };
